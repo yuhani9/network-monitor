@@ -18,13 +18,23 @@ def main():
     host = "example.com"
     port = 443
     
-    latency = measure_latency(host, port)
+    print(f"monitoring {host}:{port}")
+    print("Press Ctrl+C to stop.\n")
     
-    if latency is not None:
-        print(f"Connected: {host}:{port}")
-        print(f"Latency: {latency:.2f} ms")
-    else:
-        print("Connection failed")
+    try:
+        while True:
+            latency = measure_latency(host, port)
+        
+            if latency is not None:
+                print(f"[OK] {latency:.2f} ms")
+            else:
+                print("[FAIL] Connection failed")
+            
+            time.sleep(1)            
+            
+    except KeyboardInterrupt:
+        print("\nMonitoring stopped.")
+        
 if __name__ == "__main__":
     main()        
                     
