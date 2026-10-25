@@ -16,3 +16,6 @@ Desktop.ini
 
 # Local data
 data/
+
+# Generated graphs
+output/
